@@ -67,8 +67,10 @@
                 return;
             }
             else {
+#ifdef SQLITE_HAS_CODEC
                 const char *key = [[options objectForKey:@"key"] UTF8String];
                 if(key != NULL) sqlite3_key(db, key, strlen(key));
+#endif
                 if(sqlite3_exec(db, (const char*)"SELECT count(*) FROM sqlite_master;", NULL, NULL, NULL) == SQLITE_OK) {
                     dbPointer = [NSValue valueWithPointer:db];
                     [openDBs setObject: dbPointer forKey: dbname];
