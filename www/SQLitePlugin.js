@@ -12,15 +12,13 @@
 // js2coffee SQLitePlugin.js > SQLitePlugin-new.coffee
 // (will lose the comments)
 
-if (!window.Cordova) window.Cordova = window.cordova;
-
-(function() {
-  var SQLitePlugin, SQLitePluginTransaction, counter, getOptions, root, exec;
-  root = this;
+  var SQLitePlugin, SQLitePluginTransaction, counter, getOptions, exec, SQLitePluginExport;
   counter = 0;
 
+  SQLitePluginExport = {};
+
   exec = function(method, options, success, error) {
-    if (root.SQLitePlugin.DEBUG) {
+    if (SQLitePluginExport.DEBUG) {
       console.log('SQLitePlugin.' + method + '(' + JSON.stringify(options) + ')');
     }
     cordova.exec(success, error, "SQLitePlugin", method, [options]);
@@ -285,7 +283,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
     this.run();
   };
 
-  SQLiteFactory = {
+  var SQLiteFactory = {
     opendb: function() {
       var errorcb, first, okcb, openargs;
       if (arguments.length < 1) return null;
@@ -314,9 +312,8 @@ if (!window.Cordova) window.Cordova = window.cordova;
         exec("delete", { path: databaseName }, success, error);
     }
   };
-
-  root.SQLitePlugin = {
-    openDatabase: SQLiteFactory.opendb,
-    deleteDatabase: SQLiteFactory.deleteDb
-  };
-}).call(this);
+    
+  SQLitePluginExport.openDatabase = SQLiteFactory.opendb;
+  SQLitePluginExport.deleteDatabase = SQLiteFactory.deleteDb;
+  
+  module.exports = SQLitePluginExport;
