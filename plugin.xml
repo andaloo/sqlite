@@ -17,8 +17,8 @@
     <platform name="ios">
 
         <!-- Cordova 3+ -->
-        <config-file target="config.xml" parent="/widget/plugins">
-                <feature name="SQLitePlugin" value="SQLitePlugin"/>
+        <config-file target="config.xml" parent="/*">
+            <feature name="SQLitePlugin" value="SQLitePlugin"/>
         </config-file>
 
         <!-- Note: the ios src is based off src/ios implicitly --> 

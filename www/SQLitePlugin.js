@@ -20,7 +20,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
   counter = 0;
 
   exec = function(method, options, success, error) {
-    if (root.sqlitePlugin.DEBUG){
+    if (root.SQLitePlugin.DEBUG) {
       console.log('SQLitePlugin.' + method + '(' + JSON.stringify(options) + ')');
     }
     cordova.exec(success, error, "SQLitePlugin", method, [options]);
@@ -315,8 +315,8 @@ if (!window.Cordova) window.Cordova = window.cordova;
     }
   };
 
-  root.sqlitePlugin = {
+  root.SQLitePlugin = {
     openDatabase: SQLiteFactory.opendb,
     deleteDatabase: SQLiteFactory.deleteDb
   };
-})();
+}).call(this);
