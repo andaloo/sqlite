@@ -52,6 +52,7 @@
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"You must specify database name"];
     }
     else {
+        NSLog(@"[SQLitePlugin] open %@", dbname);
         dbPointer = [openDBs objectForKey:dbname];
         if (dbPointer != NULL) {
             // NSLog(@"Reusing existing database connection");
