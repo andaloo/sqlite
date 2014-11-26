@@ -4,11 +4,11 @@
     version="1.0.0">
 
     <name>SQLitePlugin</name>
-	
+
     <engines>
-        <engine name="cordova" version="2.4.0" />
+        <engine name="cordova" version="3.0.0" />
     </engines>
-	
+
     <js-module src="www/SQLitePlugin.js" name="SQLitePlugin">
         <clobbers target="SQLitePlugin" />
     </js-module>
@@ -23,7 +23,7 @@
             </feature>
         </config-file>
 
-        <!-- Note: the ios src is based off src/ios implicitly --> 
+        <!-- Note: the ios src is based off src/ios implicitly -->
         <header-file src="src/ios/SQLitePlugin.h" />
         <source-file src="src/ios/SQLitePlugin.m" />
         <framework src="libsqlite3.dylib" />
